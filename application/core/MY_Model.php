@@ -28,13 +28,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->get();
         }
 
-        public function getLike($table = '', $condition = array(), $where_condition = array())
+        public function getOrLike($table = '', $condition = array(), $or_like = array(), $or_like_2 = array(), $or_like_3 = array())
+        {
+            $this->db->select('*');
+            $this->db->from($table);
+            if(strlen($condition['customer']) <= 5 && is_numeric($condition['customer'])) {
+                $this->db->where('numbering', $or_like_3['numbering']);
+            } else {
+                if(!empty($condition)) {
+                    $this->db->like($condition);
+                }
+    
+                if(!empty($or_like)) {
+                    $this->db->or_like($or_like);
+                }
+    
+                if(!empty($or_like_2)) {
+                    $this->db->or_like($or_like_2);
+                }
+    
+                if(!empty($or_like_3)) {
+                    $this->db->or_like($or_like_3);
+                }
+            }            
+            return $this->db->get();
+        }
+
+        public function getLike($table = '', $condition = array(), $where_condition = array(), $or_like = array(), $or_like_2 = array())
         {
             $this->db->select('*');
             $this->db->from($table);
             if(!empty($condition)) {
                 $this->db->like($condition);
             }
+
+            if(!empty($or_like)) {
+                $this->db->or_like($or_like);
+            }
+
+            if(!empty($or_like_2)) {
+                $this->db->or_like($or_like_2);
+            }
+
             if(!empty($where_condition)) {
                 $this->db->where($where_condition);
             }

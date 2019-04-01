@@ -28,12 +28,6 @@ class Login extends MY_Controller
             'title'     => $this->_title,
             'class'     => $this->_module,
             'load'      => site_url( $this->_module . '/load' )
-            
-            // 'action'    => site_url($this->_module . '/login'),
-            // 'signup'    => site_url($this->_module . '/signup'),
-            // 'delete'    => site_url($this->_module . '/deleteData'),
-            // 'edit'      => site_url($this->_module . '/editData'),
-            // 'update'    => site_url($this->_module . '/updateData'),
         );
 
         $this->load->view($this->_module . '/main', $data);
@@ -41,7 +35,9 @@ class Login extends MY_Controller
 
     public function load()
     {
-        echo json_encode($this->input->get());
+        $condition = $this->input->get('param');
+        $data = $this->master_model->getOrLike('m_data', array('customer' => $condition), array('c_address' => $condition), array('ktp_detail' => $condition), array('numbering' => $condition));
+        echo json_encode($data->result());
     }
 
     public function login()

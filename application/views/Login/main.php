@@ -12,10 +12,10 @@
         <button class="btn btn-block btn-secondary" style="margin-top: 8px;" onclick="checkData()">Cari</button>
       </div>
     </div>
+    
+    <div id="container-jamaah">
 
-    <div class="row">
-
-    </div>
+    </div>    
   </div>
 </div>
 
@@ -26,6 +26,35 @@
     let list_jamaah = [];
     $('#condition').val('');
   })
+
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
+
+  function cardJamaah(nama, tagihan, address, no_urut) {
+    let card = `<div class="row" id="card-jamaah" style="margin-top: 8px;">
+      <div class="col-lg-6 col-sm-12 offset-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <b>${nama}</b>
+            <span class="float-right">No. Urut - ${no_urut}</span>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3">Tagihan</div>
+              <div class="col-9"><h5 class="card-title"><b>Rp. ${formatNumber(tagihan)} </b></h5></div>
+            </div>
+            <div class="row">
+              <div class="col-3">Alamat</div>
+              <div class="col-9"><p class="card-text">${address}.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`
+
+    return card;
+  }
 
   function checkData() {
 
@@ -38,7 +67,9 @@
       data: { param: condition }
     })
     .done(function(res) {
-      console.log(res)
+      $.map(res, function(item) {
+        $('#container-jamaah').prepend(cardJamaah(item.customer, item.amount, item.c_address, item.numbering));
+      })
     }); 
   }    
 </script>
