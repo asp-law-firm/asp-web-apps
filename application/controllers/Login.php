@@ -24,14 +24,21 @@ class Login extends MY_Controller
         $data = array(
             'title'     => $this->_title,
             'class'     => $this->_module,
-            'action'    => site_url($this->_module . '/login'),
-            'signup'    => site_url($this->_module . '/signup'),
-            'delete'    => site_url($this->_module . '/deleteData'),
-            'edit'      => site_url($this->_module . '/editData'),
-            'update'    => site_url($this->_module . '/updateData'),
+            'load'      => site_url( $this->_module . '/load' )
+            
+            // 'action'    => site_url($this->_module . '/login'),
+            // 'signup'    => site_url($this->_module . '/signup'),
+            // 'delete'    => site_url($this->_module . '/deleteData'),
+            // 'edit'      => site_url($this->_module . '/editData'),
+            // 'update'    => site_url($this->_module . '/updateData'),
         );
 
         $this->load->view($this->_module . '/main', $data);
+    }
+
+    public function load()
+    {
+        # code...
     }
 
     public function login()
