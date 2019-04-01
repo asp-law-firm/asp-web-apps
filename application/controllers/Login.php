@@ -11,6 +11,9 @@ class Login extends MY_Controller
     
     public function __construct()
     {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
         parent::__construct();
         //Do your magic here
         if ($this->session->userdata('is_loggedin') === true) {
@@ -38,7 +41,7 @@ class Login extends MY_Controller
 
     public function load()
     {
-        # code...
+        echo json_encode($this->input->get());
     }
 
     public function login()
