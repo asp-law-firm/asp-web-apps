@@ -81,23 +81,47 @@
     return card;
   }
 
+  function cardNull(msg) {
+    let card = `<div class="row" id="card-jamaah" style="margin-top: 8px;">
+      <div class="col-lg-6 col-sm-12 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <i class="fas fa-exclamation-triangle fa-3x"></i>
+            <h3 style="margin-top: 4px;">${msg}</h3>
+          </div>
+        </div>
+      </div>
+    </div>`
+
+    return card;
+  }
+
   function checkData() {
     $('#container-jamaah').empty();
     $('#container-animation').fadeIn();
     let condition = $('#condition').val();
 
-    $.ajax({
-      url: '<?php echo $load; ?>',
-      dataType: 'json',
-      type: 'GET',
-      data: { param: condition }
-    })
-    .done(function(res) {
+    if(condition.length == 0) {
       $('#container-animation').fadeOut();
-      $.map(res, function(item) {
-        $('#container-jamaah').prepend(cardJamaah(item.customer, item.amount, item.c_address, item.numbering));
+      $('#container-jamaah').prepend(cardNull('Kata Kunci Tidak Boleh Kosong'));
+    } else {
+      $.ajax({
+        url: '<?php echo $load; ?>',
+        dataType: 'json',
+        type: 'GET',
+        data: { param: condition }
       })
-    }); 
+      .done(function(res) {
+        $('#container-animation').fadeOut();
+        if (res.length > 0) {
+          $.map(res, function(item) {
+            $('#container-jamaah').prepend(cardJamaah(item.customer, item.amount, item.c_address, item.numbering));
+          })
+        } else {
+          $('#container-jamaah').prepend(cardNull('Data Tidak Ditemukan'));
+        }
+      }); 
+    }
   }    
 </script>
 
