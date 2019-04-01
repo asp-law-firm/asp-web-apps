@@ -1,5 +1,20 @@
 <?php $this->load->view('layouts/header'); ?>
 
+<style>
+  @-webkit-keyframes rotating {
+      from{
+          -webkit-transform: rotate(0deg);
+      }
+      to{
+          -webkit-transform: rotate(360deg);
+      }
+  }
+
+  .rotating {
+      -webkit-animation: rotating 2s linear infinite;
+  }
+</style>
+
 <body>
   <div id="header" style="margin: 32px;">
     <h1 class="text-center">Data Jamaah Travel</h1>
@@ -12,9 +27,19 @@
         <button class="btn btn-block btn-secondary" style="margin-top: 8px;" onclick="checkData()">Cari</button>
       </div>
     </div>
-    
-    <div id="container-jamaah">
 
+    <div class="container" style="margin-top: 32px; display: none;" id="container-animation">
+      <div class="row">
+        <div class="col-lg-6 col-sm-12 offset-lg-3 text-center">
+          <div id="spinner" class="mx-auto">
+            <img src="<?php echo base_url('assets/img/spinner_fidget.png'); ?>" alt="" width="75" height="75" class="rotating">
+          </div>
+          <h4>Memeriksa Data ...</h4>
+        </div>
+      </div>
+    </div>    
+
+    <div id="container-jamaah">
     </div>    
   </div>
 </div>
@@ -57,7 +82,8 @@
   }
 
   function checkData() {
-
+    $('#container-jamaah').empty();
+    $('#container-animation').fadeIn();
     let condition = $('#condition').val();
 
     $.ajax({
@@ -67,6 +93,7 @@
       data: { param: condition }
     })
     .done(function(res) {
+      $('#container-animation').fadeOut();
       $.map(res, function(item) {
         $('#container-jamaah').prepend(cardJamaah(item.customer, item.amount, item.c_address, item.numbering));
       })
