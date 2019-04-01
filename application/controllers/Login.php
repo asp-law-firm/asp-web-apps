@@ -7,7 +7,7 @@ class Login extends MY_Controller
 
     private $_table     = 'account';
     private $_module    = 'Login';
-    private $_title     = 'Login';
+    private $_title     = 'Database Jamaah Travel PT. SBL ( dalam PKPU )';
     
     public function __construct()
     {
