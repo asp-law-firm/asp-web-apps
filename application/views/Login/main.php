@@ -13,17 +13,33 @@
   .rotating {
       -webkit-animation: rotating 2s linear infinite;
   }
+
+  @media only screen and (max-device-width : 640px) {
+    /* Styles */
+    .f-size {
+      font-size: 22px;
+    }
+
+    .f-size-sub {
+      font-size: 18px;
+    }
+
+    ::placeholder {
+      font-size: 12px;
+    }
+  }
+
 </style>
 
 <body>
   <div id="header" style="margin: 32px;">
-    <h1 class="text-center">Data Jamaah Travel</h1>
-    <h4 class="text-center">PT. Solusi Balad Lumampah ( dalam PKPU )</h4>
+    <h1 class="text-center f-size">Data Jamaah Travel</h1>
+    <h4 class="text-center f-size-sub">PT. Solusi Balad Lumampah<br>( dalam PKPU )</h4>
   </div>
   <div class="container" style="margin-top: 8px;">
     <div class="row">
       <div class="col-lg-6 col-sm-12 offset-lg-3">
-        <input type="text" class="form-control" id="condition" placeholder="Masukan No. Urut / KTP / Nama / Alamat">
+        <input type="text" class="form-control" id="condition" placeholder="Masukan No. Urut / KTP / Nama / Alamat / Kuasa">
         <button class="btn btn-block btn-secondary" style="margin-top: 8px;" onclick="checkData()">Cari</button>
       </div>
     </div>
