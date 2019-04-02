@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->get();
         }
 
-        public function getOrLike($table = '', $condition = array(), $or_like = array(), $or_like_2 = array(), $or_like_3 = array())
+        public function getOrLike($table = '', $condition = array(), $or_like = array(), $or_like_2 = array(), $or_like_3 = array(), $or_like_4 = array())
         {
             $this->db->select('*');
             $this->db->from($table);
@@ -49,6 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
                 if(!empty($or_like_3)) {
                     $this->db->or_like($or_like_3);
+                }
+
+                if(!empty($or_like_4)) {
+                    $this->db->or_like($or_like_4);
                 }
             }            
             return $this->db->get();
