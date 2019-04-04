@@ -47,6 +47,10 @@
     ::placeholder {
       font-size: 12px;
     }
+
+    .fn-mob {
+      font-size: 12px;
+    }
   }
 
 </style>
@@ -120,34 +124,34 @@
         <div class="card">
           <div class="card-header">
             <div class="row">
-              <div class="col">
+              <div class="col fn-mob">
                 <b>${nama}</b>
-                <span class="float-right">No. Urut - ${no_urut}</span>
+                <span class="float-right fn-mob">No. Urut - ${no_urut}</span>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <span class="badge badge-${(lunas == 'LUNAS') ? 'success' : 'danger'}">${ ( lunas == '') ? 'TIDAK ADA STATUS' : lunas }</span>
-                <span class="badge badge-${(sync == 'GAGAL SYNCRONIZE') ? 'danger' : (sync == '') ? 'danger' : 'success'}">${ ( sync == '') ? 'TIDAK ADA STATUS' : sync}</span>
+                <span class="fn-mob badge badge-${(lunas == 'LUNAS') ? 'success' : 'danger'}">${ ( lunas == '') ? 'TIDAK ADA STATUS' : lunas }</span>
+                <span class="fn-mob badge badge-${(sync == 'GAGAL SYNCRONIZE') ? 'danger' : (sync == '') ? 'danger' : 'success'}">${ ( sync == '') ? 'TIDAK ADA STATUS' : sync}</span>
               </div>
             </div>
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-3">Kuasa</div>
-              <div class="col-9"><p class="card-text">${kuasa}.</p></div>
+              <div class="col-3 fn-mob">Kuasa</div>
+              <div class="col-9"><p class="card-text fn-mob">${kuasa}.</p></div>
             </div>            
             <div class="row">
-              <div class="col-3">Alamat</div>
-              <div class="col-9"><p class="card-text">${address}.</p></div>
+              <div class="col-3 fn-mob">Alamat</div>
+              <div class="col-9"><p class="card-text fn-mob">${address}.</p></div>
             </div>
             <div class="row">
-              <div class="col-3">Tagihan</div>
-              <div class="col-9"><h5 class="card-title"><b>Rp. ${formatNumber(tagihan)} </b></h5></div>
+              <div class="col-3 fn-mob">Tagihan</div>
+              <div class="col-9"><h5 class="card-title fn-mob"><b>Rp. ${formatNumber(tagihan)} </b></h5></div>
             </div>
             <div class="row">
-              <div class="col-3">Keterangan</div>
-              <div class="col-9"><h5 class="card-title">${(keterangan) ? keterangan : '-'}</h5></div>
+              <div class="col-3 fn-mob">Ket.</div>
+              <div class="col-9"><h5 class="card-title fn-mob">${(keterangan) ? keterangan : '-'}</h5></div>
             </div>
           </div>
         </div>
