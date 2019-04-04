@@ -108,7 +108,7 @@
         e.preventDefault();
         $inp.val("").trigger("input");
 
-        $('#container-jamaah').fadeOut();
+        $('#container-jamaah').empty();
       });
   
 });
