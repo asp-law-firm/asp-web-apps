@@ -32,8 +32,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             $this->db->select('*');
             $this->db->from($table);
-            if(strlen($condition['customer']) <= 5 && is_numeric($condition['customer'])) {
-                $this->db->where('numbering', $or_like_3['numbering']);
+            if(strlen($condition['nama_after']) <= 5 && is_numeric($condition['nama_after'])) {
+                $this->db->where('no_urut', $or_like_3['no_urut']);
             } else {
                 if(!empty($condition)) {
                     $this->db->like($condition);

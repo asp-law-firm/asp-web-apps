@@ -36,7 +36,15 @@ class Login extends MY_Controller
     public function load()
     {
         $condition = $this->input->get('param');
-        $data = $this->master_model->getOrLike('m_data', array('customer' => $condition), array('c_address' => $condition), array('ktp_detail' => $condition), array('numbering' => $condition), array('power_of_attorney_detail' => $condition));
+        $data = $this->master_model->getOrLike(
+            'v_status_sbl', 
+            array('nama_after'  => $condition), 
+            array('alamat'      => $condition), 
+            array('ktp_detail'  => $condition), 
+            array('no_urut'     => $condition), 
+            array('kuasa'       => $condition)
+        );
+        // print_debug($data->result());
         echo json_encode($data->result());
     }
 }

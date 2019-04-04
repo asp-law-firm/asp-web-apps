@@ -114,13 +114,23 @@
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
-  function cardJamaah(nama, tagihan, address, no_urut, kuasa) {
+  function cardJamaah(nama, tagihan, address, no_urut, kuasa, lunas, sync, keterangan) {
     let card = `<div class="row" id="card-jamaah" style="margin-top: 8px;">
       <div class="col-lg-6 col-sm-12 offset-lg-3">
         <div class="card">
           <div class="card-header">
-            <b>${nama}</b>
-            <span class="float-right">No. Urut - ${no_urut}</span>
+            <div class="row">
+              <div class="col">
+                <b>${nama}</b>
+                <span class="float-right">No. Urut - ${no_urut}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="badge badge-${(lunas == 'LUNAS') ? 'success' : 'danger'}">${ ( lunas == '') ? 'TIDAK ADA STATUS' : lunas }</span>
+                <span class="badge badge-${(sync == 'GAGAL SYNCRONIZE') ? 'danger' : (sync == '') ? 'danger' : 'success'}">${ ( sync == '') ? 'TIDAK ADA STATUS' : sync}</span>
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <div class="row">
@@ -134,6 +144,10 @@
             <div class="row">
               <div class="col-3">Tagihan</div>
               <div class="col-9"><h5 class="card-title"><b>Rp. ${formatNumber(tagihan)} </b></h5></div>
+            </div>
+            <div class="row">
+              <div class="col-3">Keterangan</div>
+              <div class="col-9"><h5 class="card-title">${(keterangan) ? keterangan : '-'}</h5></div>
             </div>
           </div>
         </div>
@@ -177,7 +191,7 @@
         $('#container-animation').fadeOut();
         if (res.length > 0) {
           $.map(res, function(item) {
-            $('#container-jamaah').prepend(cardJamaah(item.customer, item.amount, item.c_address, item.numbering, item.power_of_attorney_detail));
+            $('#container-jamaah').prepend(cardJamaah(item.nama_after, item.tagihan, item.alamat, item.no_urut, item.kuasa, item.status_lunas, item.status_sbl, item.keterangan));
           })
         } else {
           $('#container-jamaah').prepend(cardNull('Data Tidak Ditemukan'));
