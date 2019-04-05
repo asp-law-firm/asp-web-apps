@@ -129,12 +129,6 @@
                 <span class="float-right fn-mob">No. Urut - ${no_urut}</span>
               </div>
             </div>
-            <div class="row">
-              <div class="col">
-                <span class="fn-mob badge badge-${(lunas == 'LUNAS') ? 'success' : 'danger'}">${ ( lunas == '') ? 'TIDAK ADA STATUS LUNAS' : lunas }</span>
-                <span class="fn-mob badge badge-${(sync == 'GAGAL SYNCRONIZE') ? 'danger' : (sync == '') ? 'danger' : 'success'}">${ ( sync == '') ? 'TIDAK ADA STATUS SINKRON' : sync}</span>
-              </div>
-            </div>
           </div>
           <div class="card-body">
             <div class="row">
