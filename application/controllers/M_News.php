@@ -18,7 +18,7 @@ class M_News extends MY_Controller
 
     public function index( $num = 0)
     {
-        $config['full_tag_open'] = '<ul class="pagination justify-content-center">';
+        $config['full_tag_open'] = '<ul class="pagination justify-content-center fn-mob">';
         $config['full_tag_close'] = '</ul>';
         $config['attributes'] = ['class' => 'page-link'];
         $config['first_link'] = false;
@@ -50,6 +50,13 @@ class M_News extends MY_Controller
         $this->pagination->initialize($config);
         $data['result']         = $this->master_model->getAll('m_data_news', 'created_on','', $config['per_page'], $from)->result();
         $this->load->view($this->_module . '/main', $data);
+    }
+
+    public function load()
+    {
+        $id             = $this->input->get('id');
+        $result_news    = master::getDataById(array( 'id' => $id ), 'm_data_news');
+        return $result_news;
     }
 }
 /* End of file M_News.php */

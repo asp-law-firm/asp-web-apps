@@ -216,12 +216,12 @@ class master
         return self::setResponse($response, self::statusCode($data), self::$_json);
     }
 
-    public static function getDataById($data = array(), $table = '')
+    public static function getDataById($condition = array(), $table = '')
     {
         $CI =& get_instance();
         $CI->load->model(array('master_model'));
 
-        $data       = $CI->master_model->getById($data, $table);
+        $data       = $CI->master_model->getById($condition, $table);
         $response   = self::responseData(self::status($data->num_rows()), $data->result(), '', '');
 
         return self::setResponse($response, self::statusCode($data), self::$_json);
