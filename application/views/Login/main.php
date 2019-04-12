@@ -59,8 +59,18 @@
   <div id="header" style="margin: 32px;">
     <h1 class="text-center f-size">Data Jamaah Travel</h1>
     <h4 class="text-center f-size-sub">PT. Solusi Balad Lumampah<br>( dalam PKPU )</h4>
-  </div>
+  </div>  
   <div class="container" style="margin-top: 8px;">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 offset-lg-3">
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">          
+          <a href="<?php echo base_url('master-news/index'); ?>" style="text-decoration: underline; color: inherit;" class="fn-mob"><strong>Klik untuk melihat berita terbaru<br>PT. Solusi Balad Lumampah ( dalam PKPU )</strong></a>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-6 col-sm-12 offset-lg-3">
       <span class="clearable">

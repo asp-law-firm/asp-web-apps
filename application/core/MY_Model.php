@@ -8,12 +8,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->query($query);
         }
 
-        public function getAll($table, $orderBy = '', $select = '*')
+        public function getAll($table, $orderBy = '', $select = '*', $limit = 0, $offset = 0)
         {
             $this->db->select($select);
             $this->db->from($table);
             if($orderBy) {
                 $this->db->order_by($orderBy, 'asc');
+            }
+            if($limit) {
+                $this->db->limit($limit, $offset);
             }
             return $this->db->get();
         }

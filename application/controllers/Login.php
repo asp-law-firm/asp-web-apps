@@ -44,7 +44,6 @@ class Login extends MY_Controller
             array('no_urut'     => $condition), 
             array('kuasa'       => $condition)
         );
-        // print_debug($data->result());
         echo json_encode($data->result());
     }
 }
