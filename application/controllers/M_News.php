@@ -43,7 +43,7 @@ class M_News extends MY_Controller
             'class'     => $this->_module,
             'load'      => site_url( $this->_module . '/load' )
         );        
-        $config['base_url']     = base_url() . 'master-news/index';
+        $config['base_url']     = site_url() . 'master-news/index';
         $config['total_rows']   = $this->master_model->getAll('m_data_news', 'created_on')->num_rows();
         $config['per_page']     = 5;
         $from                   = $this->uri->segment(3);

@@ -63,7 +63,7 @@
   <div class="container" style="margin-top: 8px;">
     <div class="row">
       <div class="col-lg-6 col-sm-12 offset-lg-3">
-        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">          
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
           <a href="<?php echo site_url('master-news/index'); ?>" style="text-decoration: underline; color: inherit;" class="fn-mob"><strong>Klik untuk melihat berita terbaru<br>PT. Solusi Balad Lumampah ( dalam PKPU )</strong></a>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -85,7 +85,7 @@
       <div class="row">
         <div class="col-lg-6 col-sm-12 offset-lg-3 text-center">
           <div id="spinner" class="mx-auto">
-            <img src="<?php echo base_url('assets/img/spinner_fidget.png'); ?>" alt="" width="75" height="75" class="rotating">
+            <img src="<?php echo site_url('assets/img/spinner_fidget.png'); ?>" alt="" width="75" height="75" class="rotating">
           </div>
           <h4>Memeriksa Data ...</h4>
         </div>
