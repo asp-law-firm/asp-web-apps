@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-sm-12 offset-lg-3">
-            <a href="<?php echo base_url(); ?>" class="btn btn-block btn-primary"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Kembali ke Data Jamaah</a>
+            <a href="<?php echo base_url(); ?>" class="btn btn-block btn-primary fn-mob"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Kembali ke Data Jamaah</a>
         </div>
     </div>
     <?php foreach ( $result as $key => $value ): ?>
@@ -16,11 +16,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-8"><h5 class="card-title"><span><?php echo $value->news_title; ?></span></h5></div>
-                            <div class="col-4"><span class="float-right"><small><?php echo date('d F Y', strtotime($value->created_on)); ?></span></small></div>
+                            <div class="col-8"><h5 class="card-title fn-mob"><span><?php echo $value->news_title; ?></span></h5></div>
+                            <div class="col-4"><span class="float-right fn-mob"><small><?php echo date('d F Y', strtotime($value->created_on)); ?></span></small></div>
                         </div>
                         <hr>
-                        <p class="card-text"><?php echo substr($value->news_desc, 0, 150); ?>.... <a data-toggle="modal" data-target="#exampleModalLong" style="text-decoration: underline; color: blue; cursor: pointer;">Baca Selengkapnya</a></p>
+                        <p class="card-text fn-mob"><?php echo substr($value->news_desc, 0, 150); ?>.... <a data-toggle="modal" data-target="#exampleModalLong" style="text-decoration: underline; color: blue; cursor: pointer;">Baca Selengkapnya</a></p>
                     </div>
                 </div>
             </div>

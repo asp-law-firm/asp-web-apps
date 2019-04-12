@@ -44,6 +44,60 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <link href="<?php echo base_url() ?>/assets/css/select2/select2.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>/assets/css/select2/select2.min.css.4.0.0.css" rel="stylesheet">
 
+  <style>
+  @-webkit-keyframes rotating {
+      from{
+          -webkit-transform: rotate(0deg);
+      }
+      to{
+          -webkit-transform: rotate(360deg);
+      }
+  }
+
+  .rotating {
+      -webkit-animation: rotating 2s linear infinite;
+  }
+
+  /* Clearable text inputs */
+  .clearable input[type=text]{
+    padding-right: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .clearable__clear{
+    display: none;
+    position: absolute;
+    right:0; top:7px;
+    padding: 0 20px;
+    font-style: normal;
+    font-size: 1.2em;
+    user-select: none;
+    cursor: pointer;
+  }
+  .clearable input::-ms-clear {  /* Remove IE default X */
+    display: none;
+  }
+
+  @media only screen and (max-device-width : 640px) {
+    /* Styles */
+    .f-size {
+      font-size: 22px;
+    }
+
+    .f-size-sub {
+      font-size: 18px;
+    }
+
+    ::placeholder {
+      font-size: 12px;
+    }
+
+    .fn-mob {
+      font-size: 12px;
+    }
+  }
+</style>
+
 
 </head>
 

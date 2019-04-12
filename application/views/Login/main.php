@@ -1,60 +1,5 @@
 <?php $this->load->view('layouts/header'); ?>
 
-<style>
-  @-webkit-keyframes rotating {
-      from{
-          -webkit-transform: rotate(0deg);
-      }
-      to{
-          -webkit-transform: rotate(360deg);
-      }
-  }
-
-  .rotating {
-      -webkit-animation: rotating 2s linear infinite;
-  }
-
-  /* Clearable text inputs */
-  .clearable input[type=text]{
-    padding-right: 24px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .clearable__clear{
-    display: none;
-    position: absolute;
-    right:0; top:7px;
-    padding: 0 20px;
-    font-style: normal;
-    font-size: 1.2em;
-    user-select: none;
-    cursor: pointer;
-  }
-  .clearable input::-ms-clear {  /* Remove IE default X */
-    display: none;
-  }
-
-  @media only screen and (max-device-width : 640px) {
-    /* Styles */
-    .f-size {
-      font-size: 22px;
-    }
-
-    .f-size-sub {
-      font-size: 18px;
-    }
-
-    ::placeholder {
-      font-size: 12px;
-    }
-
-    .fn-mob {
-      font-size: 12px;
-    }
-  }
-
-</style>
-
 <body>
   <div id="header" style="margin: 32px;">
     <h1 class="text-center f-size">Data Jamaah Travel</h1>
@@ -77,7 +22,7 @@
         <input type="text" id="condition" class="form-control" placeholder="Masukan No. Urut / KTP / Nama / Alamat / Kuasa">
         <i class="clearable__clear"><i class="fas fa-times-circle"></i></i>
       </span>
-        <button class="btn btn-block btn-secondary" style="margin-top: 8px;" onclick="checkData()">Cari</button>
+        <button class="btn btn-block btn-primary" style="margin-top: 8px;" onclick="checkData()">Cari</button>
       </div>
     </div>
 
