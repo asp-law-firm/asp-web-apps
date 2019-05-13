@@ -59,3 +59,7 @@ $route['master-perusahaan/index']       = 'M_Perusahaan/index';
 // News
 $route['master-news/index']             = 'M_News/index';
 $route['master-news/index/(:any)']      = 'M_News/index';
+
+// API
+$route['api/v1/save-data']              = 'API_Data/save';
+$route['api/v1/save-image']              = 'API_Data/saveImage';

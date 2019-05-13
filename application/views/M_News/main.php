@@ -14,7 +14,7 @@
         <div class="row" style="margin-top: 16px; margin-bottom: 16px;">
             <div class="col-lg-6 col-sm-12 offset-lg-3">
                 <div class="card">
-                    <img class="card-img-top" src="http://cdn2.tstatic.net/jabar/foto/bank/images/jajaran-pt-solusi-balad-lumampah-sbl_20171116_160445.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="<?php echo base_url($value->image_url); ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title fn-mob"><strong><span><?php echo $value->news_title; ?></span></strong></h5>
                         <hr>
@@ -34,33 +34,38 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">      
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title fn-mob" id="exampleModalLongTitle"><strong><span class="fn-mob" id="news_title"></span></strong></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body fn-mob">
-          <div class="row" style="margin: 4px">
-              <div class="col">
-                <img src="http://cdn2.tstatic.net/jabar/foto/bank/images/jajaran-pt-solusi-balad-lumampah-sbl_20171116_160445.jpg" alt="pt_sbl" width="300px" style="position: relative;">
-              </div>
-          </div>
-          <div class="row" style="margin: 4px">
-                <div class="col">
-                    <p class="fn-mob text-justify" id="news_content"></p>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <div class="row">	
+        <div class="col">
+            <div class="card">
+			<style>
+				.pdfobject-container { height: 30rem; border: 1px solid rgba(0,0,0,.1); }
+			</style>
+                <img class="card-img-top" src="<?php echo base_url($value->image_url); ?>" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="modal-title fn-mob" id="exampleModalLongTitle"><strong><span class="fn-mob" id="news_title"></span></strong></h5>
+                    <p class="float-right" ><small><i><?php echo $value->city; ?>, <?php echo date('d F Y', strtotime($value->created_on)); ?></i></small></p><br>
+                    <hr>                    
+					<p class="card-text fn-mob">
+						<p class="fn-mob text-justify" id="news_content"></p>
+						Jika Anda tidak dapat membuka surat dibawah, <a href="<?php echo base_url('/assets/docs/surat_undangan_kreditor.pdf') ?>" target="_blank">klik link tulisan ini.</a>
+					</p>
+					<div id="pdf_embed" style="padding: 16px;"></div>
                 </div>
-          </div>                  
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary fn-mob" data-dismiss="modal">Tutup</button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
+	</div>
+</div>
 </div>
 
+<script src="<?php echo base_url() ?>/assets/js/pdfobject.min.js"></script>
 <script type="text/javascript">
     $('#exampleModalLong').on('show.bs.modal', function(e) {
         let news_id = $(e.relatedTarget).data('news-id');
@@ -73,5 +78,10 @@
             $(e.currentTarget).find('#news_content').text(result.data[0].news_desc);
         });
     })
+
+
+	$('#exampleModalLong').on('shown.bs.modal', function () {
+		PDFObject.embed("<?php echo base_url('/assets/docs/surat_undangan_kreditor.pdf') ?>", "#pdf_embed");
+	})	
 </script>
 <?php $this->load->view('layouts/footer'); ?>

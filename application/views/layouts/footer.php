@@ -20,7 +20,10 @@
 <script src="<?php echo base_url() ?>/assets/js/select2/select2.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/select2/select2.min.js.4.0.0.js"></script>
 
- <!-- Page level plugins -->
+<!-- Pdf Object -->
+
+
+<!-- Page level plugins -->
  <!-- <script src="<?php // echo base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script> -->
 
 <!-- Page level custom scripts -->
