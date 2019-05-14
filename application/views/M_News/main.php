@@ -14,7 +14,7 @@
         <div class="row" style="margin-top: 16px; margin-bottom: 16px;">
             <div class="col-lg-6 col-sm-12 offset-lg-3">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo base_url($value->image_url); ?>" alt="Card image cap">
+                    <img class="card-img-top" src="<?php echo base_url('assets/img/banner_surat.jpg'); ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title fn-mob"><strong><span><?php echo $value->news_title; ?></span></strong></h5>
                         <hr>
@@ -47,7 +47,7 @@
 			<style>
 				.pdfobject-container { height: 30rem; border: 1px solid rgba(0,0,0,.1); }
 			</style>
-                <img class="card-img-top" src="<?php echo base_url($value->image_url); ?>" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo base_url('assets/img/banner_surat.jpg'); ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="modal-title fn-mob" id="exampleModalLongTitle"><strong><span class="fn-mob" id="news_title"></span></strong></h5>
                     <p class="float-right" ><small><i><?php echo $value->city; ?>, <?php echo date('d F Y', strtotime($value->created_on)); ?></i></small></p><br>
@@ -56,7 +56,8 @@
 						<p class="fn-mob text-justify" id="news_content"></p>
 						Jika Anda tidak dapat membuka surat dibawah, <a href="<?php echo base_url('/assets/docs/surat_undangan_kreditor.pdf') ?>" target="_blank">klik link tulisan ini.</a>
 					</p>
-					<div id="pdf_embed" style="padding: 16px;"></div>
+					<img src="<?php echo base_url('assets/img/img-190514131540-0001.jpg'); ?>" alt="" class="img-thumbnail" style="margin: 8px">
+					<img src="<?php echo base_url('assets/img/img-190514131540-0002.jpg'); ?>" alt="" class="img-thumbnail" style="margin: 8px">
                 </div>
             </div>
         </div>
