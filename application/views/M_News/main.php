@@ -10,11 +10,12 @@
             <a href="<?php echo base_url(); ?>" class="btn btn-block btn-primary fn-mob"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Kembali ke Data Jamaah</a>
         </div>
     </div>
-    <?php foreach ( $result as $key => $value ): ?>
+	<?php foreach ( $result as $key => $value ): ?>
+	<?php // var_dump($value); ?>
         <div class="row" style="margin-top: 16px; margin-bottom: 16px;">
             <div class="col-lg-6 col-sm-12 offset-lg-3">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo base_url('assets/img/banner_surat.jpg'); ?>" alt="Card image cap">
+                    <img class="card-img-top" src="<?php echo base_url($value->image_url); ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title fn-mob"><strong><span><?php echo $value->news_title; ?></span></strong></h5>
                         <hr>
@@ -54,10 +55,10 @@
                     <hr>                    
 					<p class="card-text fn-mob">
 						<p class="fn-mob text-justify" id="news_content"></p>
-						Jika Anda tidak dapat membuka surat dibawah, <a href="<?php echo base_url('/assets/docs/surat_undangan_kreditor.pdf') ?>" target="_blank">klik link tulisan ini.</a>
+						<!-- Jika Anda tidak dapat membuka surat dibawah, <a href="<?php // echo base_url('/assets/docs/surat_undangan_kreditor.pdf') ?>" target="_blank">klik link tulisan ini.</a> -->
 					</p>
-					<img src="<?php echo base_url('assets/img/img-190514131540-0001.jpg'); ?>" alt="" class="img-thumbnail" style="margin: 8px">
-					<img src="<?php echo base_url('assets/img/img-190514131540-0002.jpg'); ?>" alt="" class="img-thumbnail" style="margin: 8px">
+					<img src="<?php // echo base_url($value->image_one); ?>" alt="" class="img-thumbnail" id="img-one" style="margin: 8px">
+					<img src="<?php // echo base_url($value->image_two); ?>" alt="" class="img-thumbnail" id="img-two" style="margin: 8px">
                 </div>
             </div>
         </div>
@@ -68,6 +69,7 @@
 
 <script src="<?php echo base_url() ?>/assets/js/pdfobject.min.js"></script>
 <script type="text/javascript">
+var base_url = '<?php echo base_url(); ?>';
     $('#exampleModalLong').on('show.bs.modal', function(e) {
         let news_id = $(e.relatedTarget).data('news-id');
         $.ajax({
@@ -75,8 +77,11 @@
             dataType: 'json', 
             data: {id: news_id}
         }).done(function(result) {
+			console.log(result);
             $(e.currentTarget).find('#news_title').text(result.data[0].news_title);
             $(e.currentTarget).find('#news_content').text(result.data[0].news_desc);
+			$(e.currentTarget).find('#img-two').attr("src", base_url + result.data[0].image_two);
+			$(e.currentTarget).find('#img-one').attr("src", base_url + result.data[0].image_one);
         });
     })
 

@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->select($select);
             $this->db->from($table);
             if($orderBy) {
-                $this->db->order_by($orderBy, 'asc');
+                $this->db->order_by($orderBy, 'DESC');
             }
             if($limit) {
                 $this->db->limit($limit, $offset);
