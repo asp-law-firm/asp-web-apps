@@ -48,7 +48,7 @@
 			<style>
 				.pdfobject-container { height: 30rem; border: 1px solid rgba(0,0,0,.1); }
 			</style>
-                <img class="card-img-top" src="<?php echo base_url('assets/img/banner_surat.jpg'); ?>" alt="Card image cap">
+                <img class="card-img-top" id="img_banner" src="<?php // echo base_url('assets/img/banner_surat.jpg'); ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="modal-title fn-mob" id="exampleModalLongTitle"><strong><span class="fn-mob" id="news_title"></span></strong></h5>
                     <p class="float-right" ><small><i><?php echo $value->city; ?>, <?php echo date('d F Y', strtotime($value->created_on)); ?></i></small></p><br>
@@ -82,6 +82,7 @@ var base_url = '<?php echo base_url(); ?>';
             $(e.currentTarget).find('#news_content').text(result.data[0].news_desc);
 			$(e.currentTarget).find('#img-two').attr("src", base_url + result.data[0].image_two);
 			$(e.currentTarget).find('#img-one').attr("src", base_url + result.data[0].image_one);
+			$(e.currentTarget).find('#img_banner').attr("src", base_url + result.data[0].image_url);
         });
     })
 
