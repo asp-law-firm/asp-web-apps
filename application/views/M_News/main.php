@@ -51,14 +51,16 @@
                 <img class="card-img-top" id="img_banner" src="<?php // echo base_url('assets/img/banner_surat.jpg'); ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="modal-title fn-mob" id="exampleModalLongTitle"><strong><span class="fn-mob" id="news_title"></span></strong></h5>
-                    <p class="float-right" ><small><i><?php echo $value->city; ?>, <?php echo date('d F Y', strtotime($value->created_on)); ?></i></small></p><br>
+                    <p class="float-right" ><small><i id="spanTgl"><?php echo $value->city; ?>, <?php echo date('d F Y', strtotime($value->created_on)); ?></></small></p><br>
                     <hr>                    
 					<p class="card-text fn-mob">
 						<p class="fn-mob text-justify" id="news_content"></p>
 						<!-- Jika Anda tidak dapat membuka surat dibawah, <a href="<?php // echo base_url('/assets/docs/surat_undangan_kreditor.pdf') ?>" target="_blank">klik link tulisan ini.</a> -->
 					</p>
-					<img src="<?php // echo base_url($value->image_one); ?>" alt="" class="img-thumbnail" id="img-one" style="margin: 8px">
-					<img src="<?php // echo base_url($value->image_two); ?>" alt="" class="img-thumbnail" id="img-two" style="margin: 8px">
+
+                    <div id="image-container">
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,11 +79,14 @@ var base_url = '<?php echo base_url(); ?>';
             dataType: 'json', 
             data: {id: news_id}
         }).done(function(result) {
-			console.log(result);
+            let imageArr        = result.data[0].image_one;
+            let imgArrSplit     = imageArr.split(',');
+            $(e.currentTarget).find('#image-container').html("");
+            for (var i = 0; i < imgArrSplit.length; i++) {
+                $(e.currentTarget).find('#image-container').append('<img style="margin: 8px;" id="img-item-'+i+'" class="img-thumbnail"  src="'+base_url+imgArrSplit[i]+'" />');
+            }
             $(e.currentTarget).find('#news_title').text(result.data[0].news_title);
             $(e.currentTarget).find('#news_content').text(result.data[0].news_desc);
-			$(e.currentTarget).find('#img-two').attr("src", base_url + result.data[0].image_two);
-			$(e.currentTarget).find('#img-one').attr("src", base_url + result.data[0].image_one);
 			$(e.currentTarget).find('#img_banner').attr("src", base_url + result.data[0].image_url);
         });
     })
